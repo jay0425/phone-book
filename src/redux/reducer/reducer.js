@@ -1,6 +1,7 @@
 let initialState = {
   // 연락처가 저장되어 있을 장소가 필요하다. 아래의 코드를 친다. 타입은 배열이다.
   contactList: [],
+  keyword: '',
 };
 
 // 리듀서는 항상 행동 지침들을 가지고 있다.
@@ -31,6 +32,9 @@ function reducer(state = initialState, action) {
         ...state,
         contactList: [...state.contactList, { name: payload.name, phoneNumber: payload.phoneNumber }],
       };
+
+    case 'SEARCH_BY_NAME':
+      return { ...state, keyword: payload.keyword };
     default:
       return { ...state };
   }
